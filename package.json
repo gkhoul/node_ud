@@ -24,9 +24,10 @@
   },
   "homepage": "https://github.com/gkhoul/node_ud#readme",
   "dependencies": {
+    "express": "^4.14.0",
     "moment": "^2.14.1"
   },
   "devDependencies": {
-    "jasmine-node": "^1.14.5"    
+    "jasmine-node": "^1.14.5"
   }
 }

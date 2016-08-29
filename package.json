@@ -1,8 +1,32 @@
 {
-  "name": "application-name",
+  "name": "node_ud",
   "version": "0.0.1",
   "private": true,
+  "description": "MEAN stack test app",
+  "main": "app.js",
   "engines": {
     "node": "6.4.0"
+  },
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gkhoul/node_ud.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gkhoul/node_ud/issues"
+  },
+  "homepage": "https://github.com/gkhoul/node_ud#readme",
+  "dependencies": {
+    "moment": "^2.14.1"
+  },
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"    
   }
 }

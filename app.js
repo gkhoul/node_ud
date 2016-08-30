@@ -3,7 +3,40 @@
 
     var express = require('express');
     var app = express();
-    var mysql = require('mysql');
+    var mongoose = require('mongoose');
+
+    mongoose.connect('mongodb://lwduser:khsfbkgGg2idbS@ds019946.mlab.com:19946/abook');
+
+    var Schema = mongoose.Schema;
+
+    var personSchema = new Schema({
+        firstname: String,
+        lastname: String,
+        address: String
+    });
+
+    var Person = mongoose.model('Person', personSchema);
+
+    var john = Person({
+        firstname: 'John',
+        lastname: 'Doe',
+        address: '555 Main St.'
+    });
+
+    john.save(function (err) {
+        if (err) throw err;
+        console.log('Person saved.')
+    });
+    var jane = Person({
+        firstname: 'Jane',
+        lastname: 'Doe',
+        address: '555 Main St.'
+    });
+
+    jane.save(function (err) {
+        if (err) throw err;
+        console.log('Person saved.')
+    });
 
     var apiController = require('./controllers/apiController');
     var htmlController = require('./controllers/htmlController');
@@ -16,16 +49,12 @@
 
     app.use('/', function (req, res, next) {
         console.log('Request url: ' + req.url);
-        var con = mysql.createConnection({
-            host: 'localhost',
-            user: 'root',
-            password: '',
-            database: 'addressbook'
-        });
 
-        con.query("select people.ID, Firstname, Lastname, Address FROM People INNER JOIN PersonAddresses ON  People.ID = PersonAddresses.PersonID INNER JOIN Addresses ON PersonAddresses.AddressID = Addresses.ID", function (err, rows) {
-            if(err) throw err;
-            console.log(rows);
+        //get all the users
+        Person.find({}, function (err, users) {
+            if (err) throw err;
+            
+            console.log(users);
         });
 
         next();
